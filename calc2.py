@@ -27,6 +27,10 @@ def main(args: Namespace) -> None:
     """
     if args.operation == "add":
         result = args.number1 + args.number2
+        
+    if args.verbose:
+        print(f"Performed {args.operation} on {args.number1} and {args.number2} => {result}")
+    else:
         print(result)
 
 
@@ -51,5 +55,6 @@ if __name__ == "__main__":
         type=int,
         help="Second number for the operation."
     )
+    parser.add_argument("-v", "--verbose", action="store_true", help="Increase output verbosity.")
     args = parser.parse_args()
     main(args)
